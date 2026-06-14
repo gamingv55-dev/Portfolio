@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   ГЛОБАЛНИ СТИЛОВЕ
+   - Базови цветове, скрол, селекция, скролбар
+   - Помощни класове: .glass, .text-gradient, .section-label
+   ========================================================= */
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-slate-300 antialiased;
+  font-feature-settings: "ss01", "cv01";
+}
+
+/* По-фина селекция в premium стил */
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+  color: #fff;
+}
+
+/* Тънък tech скролбар */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #06060a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7c5cff, #22d3ee);
+  border-radius: 999px;
+  border: 2px solid #06060a;
+}
+
+@layer components {
+  /* Стъклена повърхност (за карти, navbar, форми) */
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  /* Градиентен текст за акценти в заглавията */
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-accent-soft to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  /* "Етикет на рафта" — kicker над всяка секция */
+  .section-label {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-accent-soft;
+  }
+
+  /* Контейнер ширина — еднаква в целия сайт */
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+}
+
+/* Уважаваме prefers-reduced-motion: спираме декоративните анимации */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
