@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import Section from "@/components/ui/Section";
 import { services } from "@/lib/content";
 import { Bolt, Layout, Sparkle, Cube, Check, ArrowRight } from "@/components/ui/Icons";
+import { Typewriter } from "@/components/ui/typewriter";
 
 const icons = [Bolt, Layout, Sparkle, Cube];
 
@@ -26,7 +27,24 @@ export default function Services() {
     <Section
       id="services"
       label="Услуги"
-      title={<>Избери нивото, което <span className="text-gradient">бизнесът ти заслужава</span></>}
+      title={
+        <>
+          Избери нивото, което{" "}
+          <span className="text-gradient">
+            бизнесът ти{" "}
+            <Typewriter
+              text={["заслужава", "иска", "търси"]}
+              speed={90}
+              deleteSpeed={50}
+              waitTime={1800}
+              initialDelay={400}
+              loop={true}
+              cursorChar="_"
+              cursorClassName="ml-0.5 text-accent-cyan"
+            />
+          </span>
+        </>
+      }
       subtitle="От бърз продаващ One Page до high-end изживяване с 3D и motion. Всяко ниво е изградено около една цел — резултат."
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
